@@ -44,7 +44,7 @@ jobs:
         run: yarn build
         
       - name: Create CNAME
-        run: echo 'blog.elonehoo.xyz' > CNAME
+        run: echo 'blog.elonehoo.xyz' > .vitepress/dist/CNAME
 
       # 查看 workflow 的文档来获取更多信息
       # @see https://github.com/crazy-max/ghaction-github-pages
