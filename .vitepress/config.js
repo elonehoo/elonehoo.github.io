@@ -1,7 +1,7 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  base:'/blog/',
+  base:'/',
   srcDir:'src',
   title: 'The Elone Hoo Point',
   description: "show Elhone Hoo's blog",
