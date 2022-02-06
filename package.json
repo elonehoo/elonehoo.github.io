@@ -1,0 +1,22 @@
+{
+  "scripts": {
+    "dev": "vitepress",
+    "build": "vitepress build",
+    "serve": "vitepress serve"
+  },
+  "name": "project",
+  "version": "1.0.0",
+  "description": "show my project",
+  "main": "index.js",
+  "author": "Elone Hoo",
+  "license": "MIT",
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.0",
+    "feed": "^4.2.1",
+    "gray-matter": "^4.0.2",
+    "vitepress": "^0.21.6"
+  },
+  "dependencies": {
+    "tailwindcss": "^3.0.2"
+  }
+}
