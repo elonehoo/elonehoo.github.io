@@ -1,8 +1,8 @@
 {
   "scripts": {
     "dev": "vitepress",
-    "build": "vitepress build",
-    "serve": "vitepress serve"
+    "build": "vitepress build && node ./.vitepress/genFeed",
+    "serve": "vitepress serve --port 8099"
   },
   "name": "project",
   "version": "1.0.0",

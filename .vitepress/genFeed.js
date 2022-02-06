@@ -10,9 +10,9 @@ const feed = new Feed({
   id: url,
   link: url,
   language: 'en',
-  image: '../public/logo.svg',
+  image: 'https://vuejs.org/images/logo.png',
   favicon: `${url}/favicon.ico`,
-  copyright: 'Copyright (c) 2021-present, Yuxi (Evan) You and blog contributors'
+  copyright: 'Copyright (c) 2022-present, Elone Hoo and blog contributors'
 })
 
 load(true).forEach((post) => {
