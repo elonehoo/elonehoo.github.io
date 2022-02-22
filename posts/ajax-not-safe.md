@@ -29,7 +29,7 @@ twitter: '@huchengye'
 
 有这样一个说法：**如果某个Web应用具备良好的安全性，那么再怎么用“不安全的AJAX”也削弱不了它的安全性，反之如果应用本身存在漏洞，不管用何种技术请求，它都是不安全的**
 
-![01.png](/public/blog/01.png)
+![01.png](/public/ajax-not-safe/01.png)
 
 那么为什么会有这种说法？**因为在Web应用中，客户端输入不可信是一个基本原则**
 
@@ -56,7 +56,7 @@ twitter: '@huchengye'
 4. ...（其它暂且不提）
 ```
 
-![01.png](/public/blog/02.png)
+![01.png](/public/ajax-not-safe/02.png)
 
 如上，Web前端中的安全问题主要就是这几大类（仅列举部分做分析），所以我们首先要分析AJAX与这几大类之间的关系。
 
@@ -68,7 +68,7 @@ CSRF，特征很简单：**冒用用户身份，进行恶意操作**
 
 时至今日，这项安全漏洞已经被人们剖析的很透彻了，随便Google，百度之，都会找到很多的解释。这里也用一张图来先做简单描述：
 
-![03.png](/public/blog/03.png)
+![03.png](/public/ajax-not-safe/03.png)
 
 所以我们看到的关键条件是
 
@@ -146,7 +146,7 @@ XSS的特征也可以概括为：**跨域脚本注入，攻击者通过某种方
 
 相比CSRF，XSS囊括的内容更多，而且往往是多种攻击形式组合而成
 
-![04.png](/public/blog/04.png)
+![04.png](/public/ajax-not-safe/04.png)
 
 ### 1. cookie劫持
 
@@ -213,7 +213,7 @@ XSS的特征也可以概括为：**跨域脚本注入，攻击者通过某种方
 
 上述示例中都是存储型，具体更多内容网上已经有很详细的资料，这里不再继续深入，放一张图巩固下。
 
-![05.png](/public/blog/05.png)
+![05.png](/public/ajax-not-safe/05.png)
 
 **如何预防XSS：**
 
@@ -326,7 +326,7 @@ AJAX请求的`XMLHTTPRequest`对象就是浏览器开放给JS调用HTTP请求用
 
 所以从这一点可以得出一个结论：**AJAX本质上安全性和HTTP请求一样**
 
-![06.png](/public/blog/06.png)
+![06.png](/public/ajax-not-safe/06.png)
 
 ## CORS与AJAX安全性之间的关联
 
@@ -451,7 +451,7 @@ SO，后台本身有漏洞，所以才导致被攻击，AJAX恰好是攻击的�
 
 **Origin如果不是`\*`，AJAX请求并不会有安全问题，如果是`\*`，可能会由于后台的漏洞，不经意间，AJAX就被作为一种攻击手段了，导致了出现AJAX不安全的说法**
 
-![07.png](/public/blog/07.png)
+![07.png](/public/ajax-not-safe/07.png)
 
 再看，AJAX请求真的不安全么？
 
