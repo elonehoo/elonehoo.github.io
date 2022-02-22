@@ -5,14 +5,14 @@ const { load } = require('./posts.data')
 const url = `https://blog.elonehoo.xyz`
 
 const feed = new Feed({
-  title: 'The Elone Hoo Point',
-  description: 'The official blog for the Vue.js project',
+  title: 'The Elone Hoo Blog',
+  description: 'The blog for the Elone Hoo',
   id: url,
   link: url,
   language: 'en',
   image: 'https://vuejs.org/images/logo.png',
   favicon: `${url}/favicon.ico`,
-  copyright: 'Copyright (c) 2022-present, Elone Hoo and blog contributors'
+  copyright: 'Copyright (c) 2022-present, Elone Hoo'
 })
 
 load(true).forEach((post) => {
