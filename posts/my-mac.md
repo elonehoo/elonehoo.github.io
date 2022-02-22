@@ -62,4 +62,4 @@ twitter: '@huchengye'
 
 ## 字体
 
-SF Pro、SF Mono、New York 虽然在 macOS 中被系统组件广泛使用，但是并不能直接在其他 app 里（如Word、VS Code、浏览器 font-family 等）指定使用。好在，Apple 有提供官方的下载渠道：https://developer.apple.com/fonts/，下载安装后即可正常使用了。
+SF Pro、SF Mono、New York 虽然在 macOS 中被系统组件广泛使用，但是并不能直接在其他 app 里（如Word、VS Code、浏览器 font-family 等）指定使用。好在，Apple 有提供官方的下载渠道： https://developer.apple.com/fonts/ ，下载安装后即可正常使用了。
