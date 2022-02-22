@@ -1,4 +1,4 @@
 ---
-title: The Elone Hoo Point
-subtext: Updates, tips & opinions from Elone Hoo.
+title: The Elone Hoo Blog
+subtext: Blog by Elone Hoo.
 ---
