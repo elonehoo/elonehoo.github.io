@@ -116,7 +116,7 @@ GraalVM 具有本机映像功能，可让您获取 Java 应用程序并将其本
 
 ![02.png](/public/java-vs-go/02.png)
 <div align="center">
-<font style="color:#757575;font-size:14px;">第一轮的响应时间图</font>
+<p style="color:#757575;font-size:14px;">第一轮的响应时间图</p>
 </div>
 
 请注意，在所有三个 Java 变化中，第一个请求的响应时间要长得多（在左轴上寻找那条蓝线）。在所有情况下，我们还看到了一些峰值，我们认为这是由垃圾收集或优化引起的。
@@ -147,15 +147,15 @@ GraalVM 具有本机映像功能，可让您获取 Java 应用程序并将其本
 
 ![03.png](/public/java-vs-go/03.png)
 <div align="center">
-<font style="color:#757575;font-size:14px;">启用记录但没有预热的测试运行的响应时间</font>
+<p style="color:#757575;font-size:14px;">启用记录但没有预热的测试运行的响应时间</p>
 </div>
 ![04.png](/public/java-vs-go/04.png)
 <div align="center">
-<font style="color:#757575;font-size:14px;">没有记录和预热的测试运行的响应时间</font>
+<p style="color:#757575;font-size:14px;">没有记录和预热的测试运行的响应时间</p>
 </div>
 ![05.png](/public/java-vs-go/05.png)
 <div align="center">
-<font style="color:#757575;font-size:14px;">预热但没有记录的测试运行的响应时间</font>
+<p style="color:#757575;font-size:14px;">预热但没有记录的测试运行的响应时间</p>
 </div>
 
 对于第二轮的一些观察：
@@ -210,8 +210,8 @@ GraalVM 具有本机映像功能，可让您获取 Java 应用程序并将其本
 
 ![06.png](/public/java-vs-go/06.png)
 <div align="center">
-<font style="color:#757575;font-size:14px;">Kubernetes 测试的响应时间
-</font>
+<p style="color:#757575;font-size:14px;">Kubernetes 测试的响应时间
+</p>
 </div>
 
 那么我们明白到了什么？
