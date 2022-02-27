@@ -179,16 +179,16 @@ public Result demo2(){
 
 ![01.png](/public/building-restful-web/01.png)
 
-## 使用 `ResponseEntity` 
+## 使用 `restful-return` 
 
 ```java
 @GetMapping("/demo")
-public ResponseEntity<Object> demo(){
+public Result demo(){
 	List<String> list = new ArrayList<>();
 	for (int i = 0; i < 10; i++){
 		list.add(String.valueOf(i));
 	}
-	return new ResponseEntity<>(list, HttpStatus.INTERNAL_SERVER_ERROR);
+	return Result.internalServerError(list);
 }
 ```
 
