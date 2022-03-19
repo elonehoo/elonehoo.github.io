@@ -20,7 +20,7 @@ const { frontmatter } = useData()
       >
         <li class="flex items-center space-x-2">
           <img
-            src="../../public/gravatar.png"
+            src="https://github.com/xiaoxunyao.png"
             alt="author image"
             class="w-10 h-10 rounded-full"
           />
