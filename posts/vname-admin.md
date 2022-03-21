@@ -1,6 +1,6 @@
 ---
-title: Spring Boot - 构建 RESTful Web 服务
-date: 2022-02-26
+title: 构建属于自己的管理页面
+date: 2022-03-21
 author: Elone Hoo
 twitter: '@huchengye'
 ---
