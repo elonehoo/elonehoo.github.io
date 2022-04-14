@@ -56,6 +56,10 @@
               <Car v-else-if="item.icon === 'car'" class="text-4xl opacity-50" />
               <TetrisCli v-else-if="item.icon === 'tetrisCli'" class="text-4xl opacity-50" />
               <History v-else-if="item.icon === 'history'" class="text-4xl opacity-50" />
+              <Axios v-else-if="item.icon === 'axios'" class="text-4xl opacity-50" />
+              <XiaoTools v-else-if="item.icon === 'xiaoTools'" class="text-4xl opacity-50" />
+              <Patterns v-else-if="item.icon === 'patterns'" class="text-4xl opacity-50" />
+              <Algorithm v-else-if="item.icon === 'algorithm'" class="text-4xl opacity-50" />
               <Unknown v-else class="text-4xl opacity-50" />
             </div>
             <div class="flex-auto">
@@ -99,6 +103,10 @@ import Life from './icon/Life.vue'
 import Car from './icon/Car.vue'
 import TetrisCli from './icon/TetrisCli.vue'
 import History from './icon/History.vue'
+import Axios from './icon/Axios.vue'
+import XiaoTools from './icon/XiaoTools.vue'
+import Patterns from './icon/Patterns.vue'
+import Algorithm from './icon/Algorithm.vue'
 </script>
 
 <style scoped>

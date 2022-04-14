@@ -20,6 +20,16 @@ projects:
       link: 'https://github.com/elonehoo/typing'
       desc: 'Just thought it was interesting'
       icon: 'typing'
+  Vue Components:
+    - name: 'paragraph highlight'
+      link: 'https://github.com/elonehoo/paragraph-highlight'
+      desc: 'vue paragraph highlight'
+      icon: 'paragraphHighlight'
+  TypeScript:
+    - name: 'typing'
+      link: 'https://github.com/elonehoo/typing'
+      desc: 'Just thought it was interesting'
+      icon: 'typing'
   Game: 
     - name: 'jumper'
       link: 'https://github.com/elonehoo/vue-junmper'
@@ -82,6 +92,24 @@ projects:
       link: 'https://github.com/elonehoo/vitetem-life'
       desc: 'Initialized TypeScript Project'
       icon: 'life'
+  Java:
+    - name: 'Java-Axios'
+      link: 'https://github.com/xiao-akatsuki/axios'
+      desc: 'A make it easier for java to send HTTPS'
+      icon: 'axios'
+    - name: 'xiaoTools'
+      link: 'https://github.com/xiao-akatsuki/xiaoTools'
+      desc: 'A tool class that makes java very sweet'
+      icon: 'xiaoTools'
+  Books:
+    - name: 'Design Patterns'
+      link: 'https://github.com/hzpt-inet-club/design-patterns'
+      desc: 'This is the project implementation code of the java design pattern'
+      icon: 'patterns'
+    - name: 'TypeScript Algorithm'
+      link: 'https://github.com/elonehoo/typescript-algorithm'
+      desc: 'TypeScript Algorithm'
+      icon: 'algorithm'
   Cli: 
     - name: 'tetris Cli'
       link: 'https://github.com/elonehoo/tetris-cli'
