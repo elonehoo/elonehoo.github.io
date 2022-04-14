@@ -16,10 +16,10 @@
             class="hover:text-gray-700"
             href="/"
             rel="noopener"
-            ><span class="hidden sm:inline">me </span></a
+            >me </a
           >
           <span class="mr-2 ml-2">·</span>
-          <a class="hover:text-gray-700" href="/blog.html">bl<span class="hidden sm:inline">og</span></a>
+          <a class="hover:text-gray-700" href="/blog.html">blog</a>
           <span class="mr-2 ml-2">·</span>
           <a class="hover:text-gray-700" href="/projects.html">projects </a>
           <span class="mr-2 ml-2">·</span>
