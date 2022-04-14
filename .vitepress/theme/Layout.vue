@@ -2,25 +2,24 @@
   <div class="antialiased">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 xl:max-w-5xl xl:px-0">
       <nav class="flex justify-between items-center py-10 font-bold">
-        <a class="text-xl" href="/" aria-label="The Elone Hoo Blog">
+        <a class="text-xl" href="/blog.html" aria-label="The Elone Hoo Blog">
           <img
             class="inline-block mr-2"
             style="width: 36px; height: 31px"
             alt="logo"
             src="../../public/logo.svg"
           />
-          <span v-if="!isIndex" class="hidden md:inline">The Elone Hoo Blog</span>
+          <span v-if="isIndex === 'other'" class="hidden md:inline">Elone Hoo</span>
         </a>
         <div class="text-sm text-gray-500 leading-5">
           <a
             class="hover:text-gray-700"
-            href="https://elonehoo.xyz"
-            target="_blank"
+            href="/"
             rel="noopener"
             ><span class="hidden sm:inline">me </span></a
           >
           <span class="mr-2 ml-2">·</span>
-          <a class="hover:text-gray-700" href="/">bl<span class="hidden sm:inline">og</span></a>
+          <a class="hover:text-gray-700" href="/blog.html">bl<span class="hidden sm:inline">og</span></a>
           <span class="mr-2 ml-2">·</span>
           <a
             class="hover:text-gray-700"
@@ -33,18 +32,22 @@
       </nav>
     </div>
     <main class="max-w-3xl mx-auto px-4 sm:px-6 xl:max-w-5xl xl:px-0">
-      <Home v-if="isIndex" />
+      <Me v-if="isIndex === 'me'" />
+      <Home v-else-if="isIndex === 'blog'" />
       <Article v-else />
     </main>
   </div>
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed,ref } from 'vue'
 import { useRoute } from 'vitepress'
+import Me from "./Me.vue";
 import Home from './Home.vue'
 import Article from './Article.vue'
 
 const route = useRoute()
-const isIndex = computed(() => route.path.replace(/index.html$/, '') === '/')
+const isIndex = computed(() => route.path.replace(/index.html$/, '')==='/' ? 'me' : route.path.replace(/index.html$/, '') === '/blog.html' ? 'blog' : 'other' )
+
+console.log('isIndex --> ',route.path.replace(/index.html$/, ''))
 </script>
