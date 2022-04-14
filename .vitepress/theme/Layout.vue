@@ -21,6 +21,8 @@
           <span class="mr-2 ml-2">·</span>
           <a class="hover:text-gray-700" href="/blog.html">bl<span class="hidden sm:inline">og</span></a>
           <span class="mr-2 ml-2">·</span>
+          <a class="hover:text-gray-700" href="/projects.html">projects </a>
+          <span class="mr-2 ml-2">·</span>
           <a
             class="hover:text-gray-700"
             href="https://github.com/elonehoo"
@@ -34,6 +36,7 @@
     <main class="max-w-3xl mx-auto px-4 sm:px-6 xl:max-w-5xl xl:px-0">
       <Me v-if="isIndex === 'me'" />
       <Home v-else-if="isIndex === 'blog'" />
+      <Projects v-else-if="isIndex === 'projects'" />
       <Article v-else />
     </main>
   </div>
@@ -42,12 +45,17 @@
 <script setup>
 import { computed,ref } from 'vue'
 import { useRoute } from 'vitepress'
-import Me from "./Me.vue";
+import Me from "./Me.vue"
 import Home from './Home.vue'
+import Projects from "./Projects.vue";
 import Article from './Article.vue'
 
 const route = useRoute()
-const isIndex = computed(() => route.path.replace(/index.html$/, '')==='/' ? 'me' : route.path.replace(/index.html$/, '') === '/blog.html' ? 'blog' : 'other' )
+const isIndex = computed(() => 
+  route.path.replace(/index.html$/, '')==='/' ? 'me' : 
+  route.path.replace(/index.html$/, '') === '/blog.html' ? 'blog' : 
+  route.path.replace(/index.html$/, '') === '/projects.html' ? 'projects' : 
+  'other' 
 
-console.log('isIndex --> ',route.path.replace(/index.html$/, ''))
+)
 </script>
