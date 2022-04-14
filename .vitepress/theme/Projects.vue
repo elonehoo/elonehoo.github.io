@@ -36,8 +36,10 @@
       >
         <div v-if="item.icon" class="pt-2 pr-5">
           <Proskit v-if="item.icon === 'proskit'" class="text-4xl opacity-50" />
-          <Venmo v-if="item.icon === 'venmoAdmin'" class="text-4xl opacity-50" />
-          <div v-else class="text-3xl opacity-50" :class="item.icon || 'i-carbon-unknown'" />
+          <Venmo v-else-if="item.icon === 'venmoAdmin'" class="text-4xl opacity-50" />
+          <Highlight v-else-if="item.icon === 'paragraphHighlight'" class="text-4xl opacity-50" />
+          <Typing v-else-if="item.icon === 'typing'" class="text-4xl opacity-50" />
+          <Unknown v-else class="text-4xl opacity-50" />
         </div>
         <div class="flex-auto">
           <div cla ss="text-normal">{{ item.name }}</div>
@@ -53,6 +55,9 @@
 <script setup>
 import Proskit from './icon/Proskit.vue'
 import Venmo from './icon/Venmo.vue'
+import Highlight from './icon/Highlight.vue'
+import Typing from './icon/Typing.vue'
+import Unknown from './icon/Unknown.vue'
 </script>
 
 <style scoped>

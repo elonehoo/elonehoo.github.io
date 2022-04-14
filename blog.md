@@ -1,4 +1,4 @@
 ---
-title: Elone Hoo
+title: Blog
 subtext: Blog .
 ---

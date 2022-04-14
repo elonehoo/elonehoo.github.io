@@ -11,4 +11,13 @@ projects:
       link: 'https://github.com/elonehoo/venmo-admin'
       desc: 'admin ui.'
       icon: 'venmoAdmin'
+  Last: 
+    - name: 'paragraph highlight'
+      link: 'https://github.com/elonehoo/paragraph-highlight'
+      desc: 'vue paragraph highlight'
+      icon: 'paragraphHighlight'
+    - name: 'typing'
+      link: 'https://github.com/elonehoo/typing'
+      desc: 'Just thought it was interesting'
+      icon: 'typing'
 ---
