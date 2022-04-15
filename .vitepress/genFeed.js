@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const { Feed } = require('feed')
 const { load } = require('./posts.data')
-const url = `https://blog.elonehoo.xyz`
+const url = `https://elonehoo.xyz`
 
 const feed = new Feed({
   title: 'The Elone Hoo Blog',
@@ -10,7 +10,7 @@ const feed = new Feed({
   id: url,
   link: url,
   language: 'en',
-  image: 'https://vuejs.org/images/logo.png',
+  image: '/logo.svg',
   favicon: `${url}/favicon.ico`,
   copyright: 'Copyright (c) 2022-present, Elone Hoo'
 })
