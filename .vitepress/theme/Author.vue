@@ -20,7 +20,7 @@ const { frontmatter } = useData()
       >
         <li class="flex items-center space-x-2">
           <img
-            src="https://github.com/elonehoo.png"
+            src="../../public/logo.svg"
             alt="author image"
             class="w-10 h-10 rounded-full"
           />
