@@ -101,6 +101,10 @@ projects:
       link: 'https://github.com/xiao-akatsuki/xiaoTools'
       desc: 'A tool class that makes java very sweet'
       icon: 'xiaoTools'
+    - name: 'restful-return'
+      link: 'https://github.com/elonehoo/restful-return'
+      desc: 'SpringBoot based return value types are supported by browsers.'
+      icon: 'restfulReturn'
   Books:
     - name: 'Design Patterns'
       link: 'https://github.com/hzpt-inet-club/design-patterns'
@@ -110,6 +114,11 @@ projects:
       link: 'https://github.com/elonehoo/typescript-algorithm'
       desc: 'TypeScript Algorithm'
       icon: 'algorithm'
+  theme:
+    - name: 'vitepress-theme-simple'
+      link: 'https://github.com/elonehoo/vitepress-theme-simple'
+      desc: 'vitepress theme blog'
+      icon: 'simple'
   Cli: 
     - name: 'tetris Cli'
       link: 'https://github.com/elonehoo/tetris-cli'

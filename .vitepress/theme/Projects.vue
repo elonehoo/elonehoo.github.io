@@ -60,6 +60,8 @@
               <XiaoTools v-else-if="item.icon === 'xiaoTools'" class="text-4xl opacity-50" />
               <Patterns v-else-if="item.icon === 'patterns'" class="text-4xl opacity-50" />
               <Algorithm v-else-if="item.icon === 'algorithm'" class="text-4xl opacity-50" />
+              <RestfulReturn v-else-if="item.icon === 'restfulReturn'" class="text-4xl opacity-50" />
+              <Simple v-else-if="item.icon === 'simple'" class="text-4xl opacity-50" />
               <Unknown v-else class="text-4xl opacity-50" />
             </div>
             <div class="flex-auto">
@@ -107,6 +109,8 @@ import Axios from './icon/Axios.vue'
 import XiaoTools from './icon/XiaoTools.vue'
 import Patterns from './icon/Patterns.vue'
 import Algorithm from './icon/Algorithm.vue'
+import RestfulReturn from './icon/RestfulReturn.vue'
+import Simple from './icon/Simple.vue'
 </script>
 
 <style scoped>
