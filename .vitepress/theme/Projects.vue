@@ -62,6 +62,8 @@
               <Algorithm v-else-if="item.icon === 'algorithm'" class="text-4xl opacity-50" />
               <RestfulReturn v-else-if="item.icon === 'restfulReturn'" class="text-4xl opacity-50" />
               <Simple v-else-if="item.icon === 'simple'" class="text-4xl opacity-50" />
+              <Vitem_mini v-else-if="item.icon === 'vitem-mini'" class="text-4xl opacity-50" />
+              <Ritem_mini v-else-if="item.icon === 'ritem-mini'" class="text-4xl opacity-50" />
               <Unknown v-else class="text-4xl opacity-50" />
             </div>
             <div class="flex-auto">
@@ -111,6 +113,8 @@ import Patterns from './icon/Patterns.vue'
 import Algorithm from './icon/Algorithm.vue'
 import RestfulReturn from './icon/RestfulReturn.vue'
 import Simple from './icon/Simple.vue'
+import Vitem_mini from './icon/Vitem-mini.vue'
+import Ritem_mini from './icon/Ritem-mini.vue'
 </script>
 
 <style scoped>
