@@ -64,6 +64,8 @@
               <Simple v-else-if="item.icon === 'simple'" class="text-4xl opacity-50" />
               <Vitem_mini v-else-if="item.icon === 'vitem-mini'" class="text-4xl opacity-50" />
               <Ritem_mini v-else-if="item.icon === 'ritem-mini'" class="text-4xl opacity-50" />
+              <Titem_mini v-else-if="item.icon === 'titem-mini'" class="text-4xl opacity-50" />
+              <Eslint v-else-if="item.icon === 'eslint'" class="text-4xl opacity-50" />
               <Unknown v-else class="text-4xl opacity-50" />
             </div>
             <div class="flex-auto">
@@ -115,6 +117,8 @@ import RestfulReturn from './icon/RestfulReturn.vue'
 import Simple from './icon/Simple.vue'
 import Vitem_mini from './icon/Vitem-mini.vue'
 import Ritem_mini from './icon/Ritem-mini.vue'
+import Titem_mini from './icon/Titem-mini.vue'
+import Eslint from './icon/Eslint.vue'
 </script>
 
 <style scoped>

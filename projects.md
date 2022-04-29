@@ -11,15 +11,6 @@ projects:
       link: 'https://github.com/elonehoo/venmo-admin'
       desc: 'admin ui.'
       icon: 'venmoAdmin'
-  Last: 
-    - name: 'paragraph highlight'
-      link: 'https://github.com/elonehoo/paragraph-highlight'
-      desc: 'vue paragraph highlight'
-      icon: 'paragraphHighlight'
-    - name: 'typing'
-      link: 'https://github.com/elonehoo/typing'
-      desc: 'Just thought it was interesting'
-      icon: 'typing'
   Vue Components:
     - name: 'paragraph highlight'
       link: 'https://github.com/elonehoo/paragraph-highlight'
@@ -88,6 +79,10 @@ projects:
       link: 'https://github.com/elonehoo/ritem-mini'
       desc: 'Opinionated React Vite Starter Template'
       icon: 'ritem-mini'
+    - name: 'titem-mini'
+      link: 'https://github.com/elonehoo/titem-mini'
+      desc: 'Opinionated React Typescript Starter Template'
+      icon: 'titem-mini'
   Java:
     - name: 'Java-Axios'
       link: 'https://github.com/xiao-akatsuki/axios'
@@ -115,6 +110,11 @@ projects:
       link: 'https://github.com/elonehoo/vitepress-theme-simple'
       desc: 'vitepress theme blog'
       icon: 'simple'
+  config:
+    - name: 'eslint config'
+      link: 'https://github.com/elonehoo/eslint-config'
+      desc: 'Elone Hoo is ESLint config presets'
+      icon: 'eslint'
   Cli: 
     - name: 'tetris Cli'
       link: 'https://github.com/elonehoo/tetris-cli'
