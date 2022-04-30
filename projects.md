@@ -83,6 +83,10 @@ projects:
       link: 'https://github.com/elonehoo/titem-mini'
       desc: 'Opinionated React Typescript Starter Template'
       icon: 'titem-mini'
+    - name: 'start-trois'
+      link: 'https://github.com/elonehoo/start-trois'
+      desc: 'Three.js initialization template'
+      icon: 'trois'
   Java:
     - name: 'Java-Axios'
       link: 'https://github.com/xiao-akatsuki/axios'
