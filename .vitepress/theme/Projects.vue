@@ -67,6 +67,7 @@
               <Titem_mini v-else-if="item.icon === 'titem-mini'" class="text-4xl opacity-50" />
               <Trois v-else-if="item.icon === 'trois'" class="text-4xl opacity-50" />
               <Eslint v-else-if="item.icon === 'eslint'" class="text-4xl opacity-50" />
+              <Titem v-else-if="item.icon === 'titem'" class="text-4xl opacity-50" />
               <Unknown v-else class="text-4xl opacity-50" />
             </div>
             <div class="flex-auto">
@@ -120,6 +121,7 @@ import Vitem_mini from './icon/Vitem-mini.vue'
 import Ritem_mini from './icon/Ritem-mini.vue'
 import Titem_mini from './icon/Titem-mini.vue'
 import Trois from './icon/Trois.vue'
+import Titem from './icon/Titem.vue'
 import Eslint from './icon/Eslint.vue'
 </script>
 
