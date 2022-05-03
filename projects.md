@@ -71,6 +71,10 @@ projects:
       desc: '3D car game in three.js'
       icon: 'car'
   Starter Templates: 
+    - name: 'vitem'
+      link: 'https://github.com/elonehoo/vitem'
+      desc: 'Opinionated Vue Vite Starter Template'
+      icon: 'vitem'
     - name: 'ritem'
       link: 'https://github.com/elonehoo/ritem'
       desc: 'Opinionated React Vite Starter Template'
