@@ -70,6 +70,10 @@
               <Titem v-else-if="item.icon === 'titem'" class="text-4xl opacity-50" />
               <Ritem v-else-if="item.icon === 'ritem'" class="text-4xl opacity-50" />
               <Vitem v-else-if="item.icon === 'vitem'" class="text-4xl opacity-50" />
+              <vueMacKeyboard v-else-if="item.icon === 'vueMacKeyboard'" class="text-4xl opacity-50" />
+              <conciseByte v-else-if="item.icon === 'conciseByte'" class="text-4xl opacity-50" />
+              <pointLine v-else-if="item.icon === 'pointLine'" class="text-4xl opacity-50" />
+              <conciseMs v-else-if="item.icon === 'conciseMs'" class="text-4xl opacity-50" />
               <Unknown v-else class="text-4xl opacity-50" />
             </div>
             <div class="flex-auto">
@@ -127,6 +131,10 @@ import Titem from './icon/Titem.vue'
 import Ritem from './icon/Ritem.vue'
 import Vitem from './icon/Vitem.vue'
 import Eslint from './icon/Eslint.vue'
+import vueMacKeyboard from './icon/vueMacKeyboard.vue'
+import conciseByte from './icon/conciseByte.vue'
+import pointLine from './icon/pointLine.vue'
+import conciseMs from './icon/conciseMs.vue'
 </script>
 
 <style scoped>

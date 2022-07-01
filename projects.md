@@ -2,25 +2,41 @@
 title: Projects
 subtext: List of projects that I am proud of
 projects:
-  Upcoming:
-    - name: 'proskit'
-      link: 'https://github.com/elonehoo/proskit'
-      desc: 'a tool class that makes javascript very sweet.'
+  Last:
+    - name: 'keyboard'
+      link: 'https://github.com/elonehoo/keyboard'
+      desc: 'used to capture keyboard input.'
       icon: 'proskit'
-    - name: 'venmo-admin'
-      link: 'https://github.com/elonehoo/venmo-admin'
-      desc: 'admin ui.'
+    - name: 'haul'
+      link: 'https://github.com/elonehoo/haul'
+      desc: 'convenient and modern wrapper around fetch with smart extensible defaults'
       icon: 'venmoAdmin'
   Vue Components:
     - name: 'paragraph highlight'
       link: 'https://github.com/elonehoo/paragraph-highlight'
       desc: 'vue paragraph highlight'
       icon: 'paragraphHighlight'
+    - name: 'vue-mac-keyboard'
+      link: 'https://github.com/elonehoo/vue-mac-keyboard'
+      desc: 'Macbook computer keyboard style for vue component.'
+      icon: 'vueMacKeyboard'
   TypeScript:
     - name: 'typing'
       link: 'https://github.com/elonehoo/typing'
       desc: 'Just thought it was interesting'
       icon: 'typing'
+    - name: 'concise-byte'
+      link: 'https://github.com/elonehoo/concise-byte'
+      desc: 'Convert bytes to a human readable'
+      icon: 'conciseByte'
+    - name: 'point-line'
+      link: 'https://github.com/elonehoo/point-line'
+      desc: 'Morse code'
+      icon: 'pointLine'
+    - name: 'concise-ms'
+      link: 'https://github.com/elonehoo/concise-ms'
+      desc: 'understandable milliseconds'
+      icon: 'conciseMs'
   Game: 
     - name: 'jumper'
       link: 'https://github.com/elonehoo/vue-junmper'
