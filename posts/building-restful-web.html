@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Spring Boot - 构建 RESTful Web 服务 | Elone Hoo</title>
+    <meta name="description" content="Hi, I'm Elone Hoo.">
+    <link rel="stylesheet" href="/assets/style.ee8626c2.css">
+    <link rel="modulepreload" href="/assets/app.a4c755db.js">
+    <link rel="modulepreload" href="/assets/posts_building-restful-web.md.f6dbbb63.lean.js">
+    
+    <link rel="icon" type="image/x-icon" href="/logo.svg">
+  <meta name="twitter:title" content="Spring Boot - 构建 RESTful Web 服务 | Elone Hoo">
+  <meta property="og:title" content="Spring Boot - 构建 RESTful Web 服务 | Elone Hoo">
+  </head>
+  <body>
+    <div id="app"><div class="antialiased"><div class="max-w-3xl mx-auto px-4 sm:px-6 xl:max-w-5xl xl:px-0"><nav class="flex justify-between items-center py-10 font-bold"><a class="text-xl" href="/" aria-label="The Elone Hoo Blog"><img class="inline-block mr-2" style="width:36px;height:31px;" alt="logo" src="/assets/logo.7d3de591.svg"><span class="hidden md:inline">Elone Hoo</span></a><div class="text-sm text-gray-500 leading-5"><a class="hover:text-gray-700" href="/" rel="noopener">me </a><span class="mr-2 ml-2">·</span><a class="hover:text-gray-700" href="/blog.html">blog</a><span class="mr-2 ml-2">·</span><a class="hover:text-gray-700" href="/projects.html">projects </a><span class="mr-2 ml-2">·</span><a class="hover:text-gray-700" href="https://github.com/elonehoo" target="_blank" rel="noopener">GitHub →</a></div></nav></div><main class="max-w-3xl mx-auto px-4 sm:px-6 xl:max-w-5xl xl:px-0"><article class="xl:divide-y xl:divide-gray-200"><header class="pt-6 xl:pb-10 space-y-1 text-center"><dl><dt class="sr-only">Published on</dt><dd class="text-base leading-6 font-medium text-gray-500"><time datetime="2022-02-26T12:00:00.000Z">February 26, 2022</time></dd></dl><h1 class="text-3xl leading-9 font-extrabold text-gray-900 tracking-tight sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">Spring Boot - 构建 RESTful Web 服务</h1></header><div class="divide-y xl:divide-y-0 divide-gray-200 xl:grid xl:grid-cols-4 xl:gap-x-10 pb-16 xl:pb-20" style="grid-template-rows:auto 1fr;"><dl class="pt-6 pb-10 xl:pt-11 xl:border-b xl:border-gray-200"><dt class="sr-only">Authors</dt><dd><ul class="flex justify-center xl:block space-x-8 sm:space-x-12 xl:space-x-0 xl:space-y-8"><li class="flex items-center space-x-2"><img src="/assets/logo.7d3de591.svg" alt="author image" class="w-10 h-10 rounded-full"><dl class="text-sm font-medium leading-5 whitespace-nowrap"><dt class="sr-only">Name</dt><dd class="text-gray-900">Elone Hoo</dd><dt class="sr-only">Twitter</dt><dd><a href="https://twitter.com/@huchengye" target="_blank" rel="noopnener noreferrer" class="link">@huchengye</a></dd></dl></li></ul></dd></dl><div class="divide-y divide-gray-200 xl:pb-0 xl:col-span-3 xl:row-span-2"><div style="position:relative;" class="prose max-w-none pt-10 pb-8"><div><p>浏览了大部分的教程，发现并没有任何一篇教程提到 <code>ResponseEntity</code> 作为返回值，都是使用了自己创建一个 <code>Result</code> 类，这样也可以算是成为了 Restful 的返回值了吗？</p><p>我发出了一个疑惑？那这样的还算是一个正常的返回值了吗？</p><hr><h2 id="绝大部分" tabindex="-1">绝大部分 <a class="header-anchor" href="#绝大部分" aria-hidden="true">#</a></h2><p>我随意的复制了一个点赞最高的<a href="https://blog.csdn.net/aiyaya_/article/details/78209992" target="_blank" rel="noopener noreferrer">博客</a></p><p>创建了一个 <code>Result</code> 和 <code>ResultCode</code> 类</p><p>代码如下</p><div class="language-java"><pre><code><span class="token keyword">import</span> <span class="token namespace">lombok<span class="token punctuation">.</span></span><span class="token class-name">Data</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">Serializable</span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Data</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Result</span> <span class="token keyword">implements</span> <span class="token class-name">Serializable</span> <span class="token punctuation">{</span>
+
+	<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> serialVersionUID <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">3948389268046368059L</span><span class="token punctuation">;</span>
+
+	<span class="token keyword">private</span> <span class="token class-name">Integer</span> code<span class="token punctuation">;</span>
+
+	<span class="token keyword">private</span> <span class="token class-name">String</span> msg<span class="token punctuation">;</span>
+
+	<span class="token keyword">private</span> <span class="token class-name">Object</span> data<span class="token punctuation">;</span>
+
+	<span class="token keyword">public</span> <span class="token class-name">Result</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+	<span class="token keyword">public</span> <span class="token class-name">Result</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> code<span class="token punctuation">,</span> <span class="token class-name">String</span> msg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>code <span class="token operator">=</span> code<span class="token punctuation">;</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>msg <span class="token operator">=</span> msg<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Result</span> <span class="token function">success</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">Result</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Result</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		result<span class="token punctuation">.</span><span class="token function">setResultCode</span><span class="token punctuation">(</span><span class="token class-name">ResultCode</span><span class="token punctuation">.</span>SUCCESS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span> result<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Result</span> <span class="token function">success</span><span class="token punctuation">(</span><span class="token class-name">Object</span> data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">Result</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Result</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		result<span class="token punctuation">.</span><span class="token function">setResultCode</span><span class="token punctuation">(</span><span class="token class-name">ResultCode</span><span class="token punctuation">.</span>SUCCESS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		result<span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span> result<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Result</span> <span class="token function">failure</span><span class="token punctuation">(</span><span class="token class-name">ResultCode</span> resultCode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">Result</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Result</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		result<span class="token punctuation">.</span><span class="token function">setResultCode</span><span class="token punctuation">(</span>resultCode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span> result<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Result</span> <span class="token function">failure</span><span class="token punctuation">(</span><span class="token class-name">ResultCode</span> resultCode<span class="token punctuation">,</span> <span class="token class-name">Object</span> data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">Result</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Result</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		result<span class="token punctuation">.</span><span class="token function">setResultCode</span><span class="token punctuation">(</span>resultCode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		result<span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span> result<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setResultCode</span><span class="token punctuation">(</span><span class="token class-name">ResultCode</span> code<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>code <span class="token operator">=</span> code<span class="token punctuation">.</span><span class="token function">code</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>msg <span class="token operator">=</span> code<span class="token punctuation">.</span><span class="token function">message</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-java"><pre><code><span class="token keyword">public</span> <span class="token keyword">enum</span> <span class="token class-name">ResultCode</span> <span class="token punctuation">{</span>
+
+	<span class="token comment">/* 成功状态码 */</span>
+	<span class="token function">SUCCESS</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">&quot;成功&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+	<span class="token comment">/* 参数错误：10001-19999 */</span>
+	<span class="token function">PARAM_IS_INVALID</span><span class="token punctuation">(</span><span class="token number">10001</span><span class="token punctuation">,</span> <span class="token string">&quot;参数无效&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token function">PARAM_IS_BLANK</span><span class="token punctuation">(</span><span class="token number">10002</span><span class="token punctuation">,</span> <span class="token string">&quot;参数为空&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token function">PARAM_TYPE_BIND_ERROR</span><span class="token punctuation">(</span><span class="token number">10003</span><span class="token punctuation">,</span> <span class="token string">&quot;参数类型错误&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token function">PARAM_NOT_COMPLETE</span><span class="token punctuation">(</span><span class="token number">10004</span><span class="token punctuation">,</span> <span class="token string">&quot;参数缺失&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+	<span class="token comment">/* 用户错误：20001-29999*/</span>
+	<span class="token function">USER_NOT_LOGGED_IN</span><span class="token punctuation">(</span><span class="token number">20001</span><span class="token punctuation">,</span> <span class="token string">&quot;用户未登录&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token function">USER_LOGIN_ERROR</span><span class="token punctuation">(</span><span class="token number">20002</span><span class="token punctuation">,</span> <span class="token string">&quot;账号不存在或密码错误&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token function">USER_ACCOUNT_FORBIDDEN</span><span class="token punctuation">(</span><span class="token number">20003</span><span class="token punctuation">,</span> <span class="token string">&quot;账号已被禁用&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token function">USER_NOT_EXIST</span><span class="token punctuation">(</span><span class="token number">20004</span><span class="token punctuation">,</span> <span class="token string">&quot;用户不存在&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token function">USER_HAS_EXISTED</span><span class="token punctuation">(</span><span class="token number">20005</span><span class="token punctuation">,</span> <span class="token string">&quot;用户已存在&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+	<span class="token comment">/* 业务错误：30001-39999 */</span>
+	<span class="token function">SPECIFIED_QUESTIONED_USER_NOT_EXIST</span><span class="token punctuation">(</span><span class="token number">30001</span><span class="token punctuation">,</span> <span class="token string">&quot;某业务出现问题&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+	<span class="token comment">/* 系统错误：40001-49999 */</span>
+	<span class="token function">SYSTEM_INNER_ERROR</span><span class="token punctuation">(</span><span class="token number">40001</span><span class="token punctuation">,</span> <span class="token string">&quot;系统繁忙，请稍后重试&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+	<span class="token comment">/* 数据错误：50001-599999 */</span>
+	<span class="token function">RESULE_DATA_NONE</span><span class="token punctuation">(</span><span class="token number">50001</span><span class="token punctuation">,</span> <span class="token string">&quot;数据未找到&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token function">DATA_IS_WRONG</span><span class="token punctuation">(</span><span class="token number">50002</span><span class="token punctuation">,</span> <span class="token string">&quot;数据有误&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token function">DATA_ALREADY_EXISTED</span><span class="token punctuation">(</span><span class="token number">50003</span><span class="token punctuation">,</span> <span class="token string">&quot;数据已存在&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+	<span class="token comment">/* 接口错误：60001-69999 */</span>
+	<span class="token function">INTERFACE_INNER_INVOKE_ERROR</span><span class="token punctuation">(</span><span class="token number">60001</span><span class="token punctuation">,</span> <span class="token string">&quot;内部系统接口调用异常&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token function">INTERFACE_OUTTER_INVOKE_ERROR</span><span class="token punctuation">(</span><span class="token number">60002</span><span class="token punctuation">,</span> <span class="token string">&quot;外部系统接口调用异常&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token function">INTERFACE_FORBID_VISIT</span><span class="token punctuation">(</span><span class="token number">60003</span><span class="token punctuation">,</span> <span class="token string">&quot;该接口禁止访问&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token function">INTERFACE_ADDRESS_INVALID</span><span class="token punctuation">(</span><span class="token number">60004</span><span class="token punctuation">,</span> <span class="token string">&quot;接口地址无效&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token function">INTERFACE_REQUEST_TIMEOUT</span><span class="token punctuation">(</span><span class="token number">60005</span><span class="token punctuation">,</span> <span class="token string">&quot;接口请求超时&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token function">INTERFACE_EXCEED_LOAD</span><span class="token punctuation">(</span><span class="token number">60006</span><span class="token punctuation">,</span> <span class="token string">&quot;接口负载过高&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+	<span class="token comment">/* 权限错误：70001-79999 */</span>
+	<span class="token function">PERMISSION_NO_ACCESS</span><span class="token punctuation">(</span><span class="token number">70001</span><span class="token punctuation">,</span> <span class="token string">&quot;无访问权限&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token keyword">private</span> <span class="token class-name">Integer</span> code<span class="token punctuation">;</span>
+
+	<span class="token keyword">private</span> <span class="token class-name">String</span> message<span class="token punctuation">;</span>
+
+	<span class="token class-name">ResultCode</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> code<span class="token punctuation">,</span> <span class="token class-name">String</span> message<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>code <span class="token operator">=</span> code<span class="token punctuation">;</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>message <span class="token operator">=</span> message<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">public</span> <span class="token class-name">Integer</span> <span class="token function">code</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>code<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">message</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>message<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">String</span> <span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">ResultCode</span> item <span class="token operator">:</span> <span class="token class-name">ResultCode</span><span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>item<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">return</span> item<span class="token punctuation">.</span>message<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">return</span> name<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Integer</span> <span class="token function">getCode</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">ResultCode</span> item <span class="token operator">:</span> <span class="token class-name">ResultCode</span><span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>item<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">return</span> item<span class="token punctuation">.</span>code<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token annotation punctuation">@Override</span>
+	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>并且编写了一个简单的demo</p><div class="language-java"><pre><code><span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/demo2&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">demo2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token class-name">Result</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Result</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	result<span class="token punctuation">.</span><span class="token function">setResultCode</span><span class="token punctuation">(</span><span class="token class-name">ResultCode</span><span class="token punctuation">.</span>DATA_IS_WRONG<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	result<span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span>list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>我们来看一下浏览器的结果</p><p><img src="/assets/01.59916890.png" alt="01.png"></p><h2 id="使用-restful-return" tabindex="-1">使用 <code>restful-return</code> <a class="header-anchor" href="#使用-restful-return" aria-hidden="true">#</a></h2><div class="language-java"><pre><code><span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/demo&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">demo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">return</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token function">internalServerError</span><span class="token punctuation">(</span>list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>结果如下</p><p><img src="/assets/02.0b222842.png" alt="02.png"></p><h2 id="结论" tabindex="-1">结论 <a class="header-anchor" href="#结论" aria-hidden="true">#</a></h2><p>高下立判。</p></div></div></div><footer class="text-sm font-medium leading-5 divide-y divide-gray-200 xl:col-start-1 xl:row-start-2"><div class="py-8"><h2 class="text-xs tracking-wide uppercase text-gray-500"> Next Article </h2><div class="link"><a href="/posts/vname-admin.html">构建属于自己的管理页面</a></div></div><div class="py-8"><h2 class="text-xs tracking-wide uppercase text-gray-500"> Previous Article </h2><div class="link"><a href="/posts/java_vs_go.html">Java 的微服务能像 Go 一样快吗？</a></div></div><div class="pt-8"><a class="link" href="/">← Back to the blog</a></div></footer></div></article></main></div></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"blog.md\":\"f7a71426\",\"index.md\":\"1c3a8d8e\",\"posts_ajax-not-safe.md\":\"5f83b82d\",\"posts_building-restful-web.md\":\"f6dbbb63\",\"posts_cn-vitest.md\":\"5a97a489\",\"posts_icons-in-pure-css.md\":\"06ad55f5\",\"posts_java_vs_go.md\":\"0bd91a02\",\"posts_my-mac.md\":\"e0b62fce\",\"posts_vname-admin.md\":\"ec47310c\",\"projects.md\":\"883ee321\"}")</script>
+    <script type="module" async src="/assets/app.a4c755db.js"></script>
+    
+  </body>
+</html>
